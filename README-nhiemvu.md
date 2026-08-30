@@ -39,16 +39,18 @@
 - Artifact contract.
 - Evidence: `docs/ARCHITECTURE.md`.
 
-### 1.4 Model ↔ runtime contract — 🟡 Đang làm
+### 1.4 Model ↔ runtime contract — 🟢 ĐÃ XONG
 - Input/output contract.
 - Tokenizer contract.
 - Artifact validation.
 - Compatibility metadata.
-- Contract v0 đã được ghi tại `docs/CONTRACTS.md`; implementation và test vẫn chưa làm.
+- Implementation: `src/khuong/contracts.py`, `src/khuong/runtime.py`.
+- Verification: 7 tests PASS trên VPS Python 3.12; GitHub Actions cũng đã PASS.
+- Evidence: `tests/test_contracts.py`, `tests/test_runtime.py`, CI workflow.
 
 ## GIAI ĐOẠN 2 — Nền tảng
 
-### 2.1 Runtime/dependency — ⬜ Chưa làm
+### 2.1 Runtime/dependency — 🟡 Đang làm
 - Python/runtime.
 - Dependency.
 - CPU/GPU/CUDA.
@@ -158,4 +160,4 @@ Model ↔ tokenizer ↔ runtime ↔ state/context ↔ memory ↔ reasoning ↔ p
 
 Unit, integration, E2E, recovery, performance, regression, clean-machine, packaging và release verification.
 
-**Trạng thái hiện tại: Giai đoạn 1 đang hoàn thiện mục 1.4; chưa được phép chuyển sang Giai đoạn 2.**
+**Trạng thái hiện tại: Giai đoạn 2 đang thực hiện mục 2.1; chưa được phép chuyển sang 2.2 khi 2.1 chưa có evidence đầy đủ.**
