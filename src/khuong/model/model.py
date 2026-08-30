@@ -16,7 +16,7 @@ class KhuongConfig:
     vocab_size: int = 131072
     context_length: int = 2048
     hidden_size: int = 4096
-    num_layers: int = 32
+    num_layers: int = 64
     num_attention_heads: int = 32
     num_kv_heads: int = 8
     ffn_hidden_size: int = 8192
