@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-import json
 
 import torch
 
@@ -13,19 +12,27 @@ FORMAT_VERSION = 1
 
 
 def save_checkpoint(model: KhuongForCausalLM, path: str | Path) -> None:
-    """Save model weights and architecture metadata in a versioned checkpoint."""
+    """Save weights and architecture metadata in a versioned checkpoint."""
     target = Path(path)
     target.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "format_version": FORMAT_VERSION,
-        "config": model.config.__dict__,
+        "config": {
+            key: value
+            for key, value in model.config.__dict__.items()
+            if not key.startswith("_")
+        },
         "state_dict": model.state_dict(),
     }
     torch.save(payload, target)
 
 
-def load_checkpoint(path: str | Path, *, map_location: str | torch.device = "cpu") -> KhuongForCausalLM:
-    """Load a checkpoint and validate its format before constructing the model."""
+def load_checkpoint(
+    path: str | Path,
+    *,
+    map_location: str | torch.device = "cpu",
+) -> KhuongForCausalLM:
+    """Load and strictly validate a Khuong checkpoint."""
     payload = torch.load(Path(path), map_location=map_location, weights_only=False)
     if not isinstance(payload, dict) or payload.get("format_version") != FORMAT_VERSION:
         raise ValueError("unsupported or invalid Khuong checkpoint")
