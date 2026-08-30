@@ -4,7 +4,23 @@ from khuong.model import KhuongConfig, KhuongForCausalLM
 
 
 def tiny_config() -> KhuongConfig:
-    return KhuongConfig(vocab_size=97, context_length=16, hidden_size=32, num_layers=2, num_attention_heads=4, num_kv_heads=2, ffn_hidden_size=64)
+    return KhuongConfig(
+        vocab_size=97,
+        context_length=16,
+        hidden_size=32,
+        num_layers=3,
+        num_attention_heads=4,
+        num_kv_heads=2,
+        ffn_hidden_size=48,
+    )
+
+
+def test_requested_architecture_is_wide_deep_with_compact_ffn():
+    config = KhuongConfig()
+    assert config.hidden_size == 4096
+    assert config.num_layers == 32
+    assert config.ffn_hidden_size == 8192
+    assert config.ffn_hidden_size / config.hidden_size == 2
 
 
 def test_forward_shape_and_loss():
