@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "khuong"
 version = "0.1.0"
 description = "Khuong AI core contracts"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
