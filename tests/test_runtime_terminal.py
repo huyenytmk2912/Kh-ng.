@@ -7,11 +7,19 @@ from khuong.terminal import TerminalCapability
 
 def make_model() -> ModelMetadata:
     return ModelMetadata(
-        model_name="khuong-test",
         model_version="0.1.0",
-        tokenizer_version="tok-0.1",
+        architecture="khuong-decoder-only-transformer",
         vocab_size=128,
         context_length=128,
+        num_layers=64,
+        hidden_size=4096,
+        num_attention_heads=32,
+        num_kv_heads=8,
+        ffn_hidden_size=8192,
+        position_encoding="RoPE",
+        normalization="RMSNorm",
+        activation="SwiGLU",
+        tied_embeddings=True,
     )
 
 
