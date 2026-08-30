@@ -57,13 +57,19 @@
 - Environment sạch.
 - Install/test/run commands.
 
-### 2.2 Tooling — ⬜ Chưa làm
-- Terminal.
-- File/project utilities.
-- Search/diff.
-- Test runner.
-- Benchmark.
-- Logging/trace.
+### 2.2 Tooling — 🟡 Đang làm
+- **Terminal capability — implementation ban đầu đã tạo.**
+- Direct model → terminal execution không yêu cầu Agent orchestration.
+- Command allowlist/denylist.
+- Working-directory confinement.
+- Timeout.
+- stdout/stderr/exit-code evidence.
+- Unit tests cho policy, execution, confinement và timeout.
+- Chưa đánh dấu hoàn thành: cần integration test với runtime/model và security review.
+- File: `src/khuong/terminal.py`.
+- Test: `tests/test_terminal.py`.
+- Tài liệu: `docs/TERMINAL_CAPABILITY.md`.
+- Các tooling còn lại: file/project utilities, search/diff, test runner, benchmark, logging/trace.
 
 ### 2.3 Platform verification — ⬜ Chưa làm
 - Smoke test.
@@ -160,4 +166,4 @@ Model ↔ tokenizer ↔ runtime ↔ state/context ↔ memory ↔ reasoning ↔ p
 
 Unit, integration, E2E, recovery, performance, regression, clean-machine, packaging và release verification.
 
-**Trạng thái hiện tại: Giai đoạn 2 đang thực hiện mục 2.1; chưa được phép chuyển sang 2.2 khi 2.1 chưa có evidence đầy đủ.**
+**Trạng thái hiện tại: Giai đoạn 2 đang thực hiện. Terminal capability đã có implementation ban đầu trên branch `feature/terminal-capability`, nhưng chưa được coi là hoàn thành cho tới khi có integration/security evidence.**
