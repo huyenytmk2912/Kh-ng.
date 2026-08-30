@@ -18,7 +18,7 @@ def tiny_config() -> KhuongConfig:
 def test_requested_architecture_is_wide_deep_with_compact_ffn():
     config = KhuongConfig()
     assert config.hidden_size == 4096
-    assert config.num_layers == 32
+    assert config.num_layers == 64
     assert config.ffn_hidden_size == 8192
     assert config.ffn_hidden_size / config.hidden_size == 2
 
