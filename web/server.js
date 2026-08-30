@@ -1,8 +1,8 @@
-import express from 'express';import{spawn}from'node:child_process';import crypto from'node:crypto';
+import express from 'express';import{spawn}from'node:child_process';import crypto from'node:crypto';import fs from'node:fs';
 const app=express();app.use(express.json());const sessions=new Set();let p=null;
 const USER=process.env.DASH_USER||'admin';const PASS=process.env.DASH_PASS||'';
 function auth(req,res,next){if(req.path==='/login.html'||req.path==='/api/login'||req.path==='/health')return next();const s=req.headers.cookie?.match(/sid=([^;]+)/)?.[1];if(!s||!sessions.has(s))return res.status(401).json({message:'Chưa đăng nhập'});next()}
-app.use(auth);app.get('/login.html',(q,r)=>r.sendFile(process.cwd()+'/web/login.html'));app.use(express.static('web'));
+app.use(auth);app.get('/login.html',(q,r)=>r.sendFile(process.cwd()+'/web/login.html'));app.use(express.static('web'));app.get('/api/screenshot',(q,r)=>{const f=process.cwd()+'/web/screenshots/latest.png';if(!fs.existsSync(f))return r.status(404).end();r.setHeader('Cache-Control','no-store');r.sendFile(f)});
 app.post('/api/login',(q,r)=>{const{username,password}=q.body||{};if(!PASS||username!==USER||password!==PASS)return r.status(401).json({message:'Sai tài khoản hoặc mật khẩu'});const sid=crypto.randomBytes(32).toString('hex');sessions.add(sid);r.setHeader('Set-Cookie',`sid=${sid}; HttpOnly; SameSite=Strict; Path=/`);r.json({ok:true})});
 app.post('/api/logout',(q,r)=>{const s=q.headers.cookie?.match(/sid=([^;]+)/)?.[1];if(s)sessions.delete(s);r.setHeader('Set-Cookie','sid=; Max-Age=0; Path=/');r.json({ok:true})});
 app.post('/api/start',(q,r)=>{if(p)return r.json({message:'Agent đang chạy'});const{message,count=1,delay=10}=q.body||{};if(!message)return r.status(400).json({message:'Thiếu tin nhắn'});p=spawn('node',['agent/chatgpt-agent.js'],{env:{...process.env,MESSAGE:message,COUNT:String(count),DELAY:String(delay)},stdio:'inherit'});p.on('close',()=>p=null);r.json({message:'Đã khởi động'});});
