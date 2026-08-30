@@ -1,9 +1,8 @@
-"""Minimal real decoder-only Transformer for Khuong."""
+"""Decoder-only Transformer model for Khuong."""
 
 from __future__ import annotations
 
 from dataclasses import dataclass
-import math
 
 import torch
 from torch import nn
@@ -12,22 +11,35 @@ import torch.nn.functional as F
 
 @dataclass(frozen=True)
 class KhuongConfig:
+    """Architecture config: wide hidden state, deep stack, compact FFN."""
+
     vocab_size: int = 131072
     context_length: int = 2048
-    hidden_size: int = 256
-    num_layers: int = 4
-    num_attention_heads: int = 8
-    num_kv_heads: int = 4
-    ffn_hidden_size: int = 1024
+    hidden_size: int = 4096
+    num_layers: int = 32
+    num_attention_heads: int = 32
+    num_kv_heads: int = 8
+    ffn_hidden_size: int = 8192
     dropout: float = 0.0
 
     def __post_init__(self) -> None:
+        positive = (
+            self.vocab_size,
+            self.context_length,
+            self.hidden_size,
+            self.num_layers,
+            self.num_attention_heads,
+            self.num_kv_heads,
+            self.ffn_hidden_size,
+        )
+        if min(positive) <= 0:
+            raise ValueError("model dimensions must be positive")
         if self.hidden_size % self.num_attention_heads:
             raise ValueError("hidden_size must be divisible by num_attention_heads")
         if self.num_attention_heads % self.num_kv_heads:
             raise ValueError("num_attention_heads must be divisible by num_kv_heads")
-        if min(self.vocab_size, self.context_length, self.hidden_size, self.num_layers, self.num_attention_heads, self.num_kv_heads, self.ffn_hidden_size) <= 0:
-            raise ValueError("model dimensions must be positive")
+        if self.ffn_hidden_size < self.hidden_size:
+            raise ValueError("ffn_hidden_size must be at least hidden_size")
 
 
 class RMSNorm(nn.Module):
@@ -71,8 +83,8 @@ class GQAAttention(nn.Module):
         q = self.q_proj(x).view(b, s, self.q_heads, self.head_dim).transpose(1, 2)
         k = self.k_proj(x).view(b, s, self.kv_heads, self.head_dim).transpose(1, 2)
         v = self.v_proj(x).view(b, s, self.kv_heads, self.head_dim).transpose(1, 2)
-        pos = torch.arange(s, device=x.device)
-        q, k = apply_rope(q, k, pos)
+        positions = torch.arange(s, device=x.device)
+        q, k = apply_rope(q, k, positions)
         k = k.repeat_interleave(self.repeat, dim=1)
         v = v.repeat_interleave(self.repeat, dim=1)
         y = F.scaled_dot_product_attention(q, k, v, is_causal=True)
@@ -126,5 +138,8 @@ class KhuongForCausalLM(nn.Module):
         if labels is not None:
             if labels.shape != input_ids.shape:
                 raise ValueError("labels must match input_ids shape")
-            out["loss"] = F.cross_entropy(logits[:, :-1].reshape(-1, logits.size(-1)), labels[:, 1:].reshape(-1))
+            out["loss"] = F.cross_entropy(
+                logits[:, :-1].reshape(-1, logits.size(-1)),
+                labels[:, 1:].reshape(-1),
+            )
         return out
