@@ -20,27 +20,31 @@
 
 ## GIAI ĐOẠN 1 — Kiến trúc và hiện trạng
 
-### 1.1 Hiểu mục tiêu — ⬜ Chưa làm
+### 1.1 Hiểu mục tiêu — 🟢 ĐÃ XONG
 - Đọc toàn bộ tài liệu dự án.
 - Chốt mục tiêu hệ thống.
 - Chốt model mục tiêu.
+- Evidence: `README.md`, `README-huongtoi.md`, `ROADMAP.md` đã được rà soát.
 
-### 1.2 Quét repository — ⬜ Chưa làm
+### 1.2 Quét repository — 🟢 ĐÃ XONG
 - Kiểm kê file/thư mục.
 - Xác định implementation hiện có.
 - Xác định phần thiếu.
+- Evidence: repository hiện không có production implementation; đã thiết lập các vùng `src/`, `tests/`, `configs/`, `scripts/`, `docs/`.
 
-### 1.3 Khóa kiến trúc — ⬜ Chưa làm
+### 1.3 Khóa kiến trúc — 🟢 ĐÃ XONG
 - Model/tokenizer/runtime boundary.
 - Orchestration boundary.
 - Dependency direction.
 - Artifact contract.
+- Evidence: `docs/ARCHITECTURE.md`.
 
-### 1.4 Model ↔ runtime contract — ⬜ Chưa làm
+### 1.4 Model ↔ runtime contract — 🟡 Đang làm
 - Input/output contract.
 - Tokenizer contract.
 - Artifact validation.
 - Compatibility metadata.
+- Contract v0 đã được ghi tại `docs/CONTRACTS.md`; implementation và test vẫn chưa làm.
 
 ## GIAI ĐOẠN 2 — Nền tảng
 
@@ -154,4 +158,4 @@ Model ↔ tokenizer ↔ runtime ↔ state/context ↔ memory ↔ reasoning ↔ p
 
 Unit, integration, E2E, recovery, performance, regression, clean-machine, packaging và release verification.
 
-**Trạng thái toàn repo: ⬜ Chưa làm.**
+**Trạng thái hiện tại: Giai đoạn 1 đang hoàn thiện mục 1.4; chưa được phép chuyển sang Giai đoạn 2.**
