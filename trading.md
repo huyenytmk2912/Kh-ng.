@@ -293,3 +293,68 @@ File này là **bản tổng hợp và ghi chú**, không sao chép toàn văn t
 ## 16. Disclaimer
 
 Trading và algorithmic trading có rủi ro mất vốn. Nội dung này phục vụ học tập và nghiên cứu kỹ thuật; không phải tư vấn đầu tư, không đảm bảo lợi nhuận và không thay thế quy định pháp lý, tài liệu của broker/exchange hoặc tư vấn chuyên môn.
+
+## 17. Cập nhật học tập — 31/08/2026
+
+### Kết hợp AI coding với trading research
+Có thể dùng AI coding agents để tăng tốc phần **data engineering, research tooling, backtest harness và test generation**, nhưng không nên giao cho agent quyền tự quyết định giao dịch hoặc bỏ qua validation.
+
+Một workflow an toàn hơn:
+
+```text
+Trading hypothesis
+      ↓
+Human-defined assumptions
+      ↓
+AI-assisted implementation
+      ↓
+Unit tests + data validation
+      ↓
+Backtest with fees/slippage
+      ↓
+OOS / walk-forward
+      ↓
+Paper trading
+      ↓
+Human review / approval
+```
+
+### Project 5 — AI-assisted quantitative research
+Xây một coding agent chỉ có quyền đọc dataset, viết code trong workspace và chạy test/backtest. Agent có thể:
+- tạo feature engineering code;
+- viết test cho timestamp alignment;
+- kiểm tra missing values và duplicate rows;
+- chạy backtest theo cấu hình cố định;
+- tạo report metrics;
+- phân loại lỗi.
+
+**Không cho agent:** tự thay đổi risk limit, tự gửi lệnh live, đọc API secrets hoặc tự tối ưu strategy rồi chọn kết quả tốt nhất mà không lưu toàn bộ experiment history.
+
+### Experiment tracking bắt buộc
+Mỗi lần chạy strategy nên lưu:
+
+```text
+experiment_id
+code_commit
+config/parameters
+data_version
+time_range
+transaction_cost assumptions
+training/in-sample range
+out-of-sample range
+metrics
+warnings
+artifacts
+```
+
+Mục tiêu là có thể tái tạo kết quả từ một commit và một data version cụ thể. Điều này giảm nguy cơ data snooping và giúp audit research.
+
+## 18. Nguồn AI-agent bổ trợ cho trading coding
+
+- Hugging Face Agents Course: https://huggingface.co/learn/agents-course/unit0/introduction — học agent fundamentals, tools/actions, framework và evaluation. citeturn0search7
+- Hugging Face Context Course: https://huggingface.co/context-course — học context engineering, Skills, MCP, Plugins, Subagents và Hooks cho code agents. citeturn0search1turn0search2
+- SWE-bench Verified: https://www.swebench.com/verified.html — tham khảo cách benchmark coding agents bằng task thực tế và test có kiểm định. citeturn0search13
+
+## 19. Cập nhật nguồn
+
+Ngày kiểm tra: **31/08/2026**. Các nguồn trading cốt lõi vẫn được giữ theo tài liệu CME, SEC, QuantConnect, NumPy, pandas và scikit-learn đã liệt kê ở trên; phần mới bổ sung AI-agent chỉ dùng cho research/coding workflow, không thay thế nguyên tắc risk management và validation.
