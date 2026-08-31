@@ -212,3 +212,97 @@ Chỉ lưu **tóm tắt, ghi chú và metadata** của tài liệu nguồn. Khô
 - NumPy User Guide: https://numpy.org/doc/stable/user/
 - pandas User Guide: https://pandas.pydata.org/docs/user_guide/
 - scikit-learn User Guide: https://scikit-learn.org/stable/user_guide.html
+
+## 13. Tài liệu mới — AI coding agents và context engineering
+
+### Hugging Face — AI Agents Course
+Khóa học miễn phí, thiên về thực hành, đi từ agent fundamentals đến frameworks và project. Nội dung gồm cách agent dùng LLM làm “brain”, tools/actions, vòng lặp **Think → Act → Observe**, rồi thực hành với `smolagents`; các phần tiếp theo bao gồm LangGraph, LlamaIndex, agentic RAG, fine-tuning cho function calling và observability/evaluation.
+
+**Cách học:** trước hết tự viết một agent tối giản bằng Python; sau đó dùng framework để so sánh abstraction. Mỗi bài phải có tool, test case và log quan sát được.
+
+- Course: https://huggingface.co/learn/agents-course/unit0/introduction
+- Syllabus: https://huggingface.co/agents-course
+
+### Hugging Face — Context Course
+Context engineering tập trung vào cách cấu trúc kiến thức để code agent tìm đúng thông tin khi cần. Khóa học mới gồm **Skills, MCP, Plugins, Subagents, Hooks** và một mini agent harness; hỗ trợ các code agents như Claude Code, Codex và OpenCode.
+
+**Bài tập quan trọng:** tạo `SKILL.md`/knowledge module cho một repository, thiết kế MCP tool, sau đó đo xem agent có giảm lỗi và giảm số lần rework hay không.
+
+- Course: https://huggingface.co/context-course
+- Introduction: https://huggingface.co/learn/context-course/unit0/introduction
+
+### SWE-bench Verified — đánh giá coding agents
+SWE-bench Verified là tập 500 bài toán đã được con người kiểm định để đánh giá coding agents và language models. Bài học quan trọng là không đánh giá agent chỉ bằng “code nhìn có vẻ đúng”; cần chạy test, xác định issue có được giải quyết và đo tỷ lệ task thành công.
+
+**Bài tập:** lấy 5–10 issue nhỏ trong một repo cá nhân, viết acceptance criteria và test trước; cho agent sửa; sau đó đánh giá pass/fail và ghi failure mode.
+
+- Benchmark: https://www.swebench.com/verified.html
+
+### OpenAI AgentKit — lưu ý về thay đổi sản phẩm
+Tài liệu AgentKit của OpenAI mô tả các công cụ xây dựng, triển khai và tối ưu agents. Trang hiện ghi chú rằng **Agent Builder và Evals sẽ được ngừng cung cấp từ 30/11/2026**; với workflow cần tiếp tục dưới dạng code, OpenAI khuyến nghị Agents SDK.
+
+**Bài học cho engineering:** ưu tiên kiến thức portable — agent loop, tool interface, evaluation dataset, tracing, tests và Git — thay vì phụ thuộc vào một UI/product cụ thể.
+
+- Nguồn: https://openai.com/index/introducing-agentkit/
+
+## 14. AI coding curriculum thực hành
+
+### Level 1 — AI-assisted developer
+- Python + Git + testing.
+- Dùng AI để giải thích code, tạo test và refactor.
+- Luôn review diff và chạy test độc lập.
+
+### Level 2 — Tool-using coding agent
+- Tool đọc/ghi file có permission rõ ràng.
+- Shell execution trong sandbox.
+- Structured tool schema.
+- Timeout/retry.
+- Logs và trace.
+
+### Level 3 — Repository agent
+- Issue → plan → code → test → review → patch.
+- Repository context qua skills/MCP.
+- Regression suite.
+- Human approval trước destructive actions.
+
+### Level 4 — Agent evaluation
+- Tạo benchmark task riêng.
+- Acceptance criteria định lượng.
+- Pass/fail dựa trên test và behavior.
+- Ghi latency, token/cost, tool errors và rework.
+- Phân loại failure: reasoning, context, tool, code, test hoặc environment.
+
+### Level 5 — Multi-agent / production
+- Tách planner/coder/reviewer khi có lý do đo được.
+- Least-privilege tool permissions.
+- Sandboxing và secret isolation.
+- Observability.
+- Canary/rollback.
+- Evaluation regression trước mỗi thay đổi agent.
+
+## 15. Project AI coding đề xuất
+
+### Project E — Repository coding agent
+Xây một agent Python nhận issue Markdown. Agent phải:
+1. đọc repository context;
+2. lập plan;
+3. xác định file cần sửa;
+4. tạo patch;
+5. chạy test/lint;
+6. sửa nếu test fail;
+7. xuất summary + diff.
+
+**Acceptance criteria:** không được tự ý truy cập secret; mọi file thay đổi phải xuất hiện trong diff; test phải chạy trước khi báo thành công; destructive command phải bị chặn hoặc yêu cầu approval.
+
+### Project F — Agent evaluation harness
+Tạo 20 task coding nhỏ, mỗi task có repository snapshot, prompt, expected behavior và test. Chạy agent nhiều lần và lưu:
+
+```text
+Task → Agent run → Tool trace → Patch → Tests → Pass/Fail → Failure category
+```
+
+Từ đó tính success rate, regression rate, average retries và cost/task. Đây là bước chuyển từ “AI viết code” sang **engineering AI coding system**.
+
+## 16. Cập nhật tài liệu — 31/08/2026
+
+Các tài liệu AI-agent ở phần 13 được kiểm tra lại trong ngày 31/08/2026. Hugging Face Agents Course hiện có nội dung về agent fundamentals, frameworks, use cases và evaluation; Context Course tập trung vào context engineering cho code agents; SWE-bench Verified cung cấp benchmark 500 task đã human-validated. OpenAI AgentKit page hiện có thông báo thay đổi sản phẩm liên quan Agent Builder/Evals và khuyến nghị Agents SDK cho workflow tiếp tục dưới dạng code. citeturn0search7turn0search0turn0search2turn0search13turn0search4
