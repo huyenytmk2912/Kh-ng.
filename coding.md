@@ -1,308 +1,223 @@
 # Tài liệu học Coding + AI Coding
 
-> Bộ tài liệu học theo hướng **Computer Science → Python → Git → data → ML → AI engineering → project**. Đây là bản tổng hợp/ghi chú có nội dung học, bài tập và nguồn gốc; không sao chép toàn văn tài liệu bên ngoài.
+> Curriculum thực hành: Computer Science → Python → Git/GitHub → data → ML → AI coding agents → evaluation → project. Nội dung là ghi chú/tóm tắt và liên kết tới nguồn, không sao chép toàn văn tài liệu có bản quyền.
 
 ## 1. Computer Science nền tảng
 
-### Harvard CS50 — Introduction to Computer Science
-CS50 phù hợp để xây tư duy giải quyết vấn đề trước khi chạy theo framework. Chương trình 2026 mô tả computational thinking, abstraction, algorithms, data structures, correctness, design và style. Khóa bắt đầu bằng C để hiểu memory và máy tính ở mức thấp, sau đó chuyển sang Python, SQL, HTML, CSS và JavaScript; cuối khóa có final project.
+### Harvard CS50
+CS50 xây computational thinking trước framework: abstraction, algorithms, data structures, correctness, design và style. Khóa 2026 đi từ C sang Python, SQL, HTML/CSS và JavaScript, kết thúc bằng project.
 
-**Cách học:** làm problem set trước khi xem lời giải; ghi lại cách tiếp cận, complexity và lỗi gặp phải.
+**Cách học:** làm problem set trước khi xem lời giải; với mỗi bài ghi algorithm, complexity, edge cases và failure mode.
 
-- Nguồn: https://cs50.harvard.edu/college/2026/fall/syllabus/
+Nguồn: https://cs50.harvard.edu/college/2026/fall/syllabus/
 
-### Thuật toán và cấu trúc dữ liệu
-Cần nắm Big-O, arrays, linked lists, stacks, queues, hash tables, trees, heaps, graphs, searching, sorting, recursion, dynamic programming, BFS/DFS và shortest path.
+### Algorithms & Data Structures
+Cần nắm Big-O, arrays, linked lists, stacks, queues, hash tables, trees, heaps, graphs, sorting/searching, recursion, dynamic programming, BFS/DFS và shortest path.
 
-**Bài tập:** mỗi thuật toán phải có implementation, test cases, complexity analysis và ít nhất một failure/edge case.
+**Bài tập chuẩn:** implementation + unit tests + complexity analysis + ít nhất một edge case.
 
 ## 2. Python
 
-### Python Tutorial — Python 3.14
-Tutorial chính thức tập trung vào người đã có chút nền tảng lập trình và muốn học Python. Nội dung gồm interpreter, numbers/text/lists, control flow, functions, data structures, modules, I/O, errors/exceptions, classes, standard library và virtual environments/packages.
+### Python 3.14 Tutorial
+Học interpreter, numbers/text/lists, control flow, functions, data structures, modules, I/O, exceptions, classes, standard library và virtual environments/packages.
 
-- Nguồn: https://docs.python.org/3.14/tutorial/
+Nguồn: https://docs.python.org/3.14/tutorial/
 
-### Checklist Python
-1. Variables, numbers, strings, booleans.
-2. `if`, `for`, `while`, `match`.
-3. Functions, arguments, scope.
-4. List/tuple/set/dict.
-5. Comprehensions và generators.
-6. Exceptions, logging.
-7. Modules/packages.
-8. `venv`, dependency management.
-9. File I/O, JSON, CSV.
-10. OOP, composition, dataclasses.
-11. Type hints.
-12. Unit/integration testing.
-13. Async basics khi làm I/O-heavy systems.
+**Checklist:** variables → functions → collections → comprehensions/generators → exceptions/logging → modules → venv → JSON/CSV → OOP/composition → type hints → testing → async basics.
 
-### Project luyện tập
-- CLI calculator.
-- File organizer.
-- CSV/JSON cleaner.
-- REST API client có retry/timeout.
-- Web scraper có rate limit và logging.
-- Project cuối khóa có tests, README, CI và Git history sạch.
+**Project:** CLI calculator, file organizer, CSV/JSON cleaner, REST API client có retry/timeout, scraper có rate limit/logging.
 
 ## 3. JavaScript / Web
 
-### MDN JavaScript Guide
-MDN Guide bao phủ grammar/types, control flow, loops, functions, expressions/operators, numbers/strings, dates, regex, collections, objects, classes, promises, iterators/generators, internationalization và modules. Reference dùng để tra chi tiết từng language feature.
+MDN JavaScript Guide bao phủ types, control flow, functions, objects/classes, collections, promises, iterators/generators, modules và browser APIs.
 
-- Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
-- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+Nguồn: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
-### Checklist
-- Scope và `let`/`const`.
-- Functions, closures.
-- Objects/prototypes/classes.
-- Arrays/Map/Set.
-- Error handling.
-- Promise + `async/await`.
-- Modules.
-- DOM và browser APIs.
-- Fetch/HTTP/JSON.
-- Basic Node.js/backend concepts.
+Học thêm HTTP/JSON, Fetch, DOM, async/await và Node.js fundamentals.
 
 ## 4. Git và GitHub
 
-### Pro Git
-Pro Git bao phủ version control, repository, commit history, branching, merging, rebasing, remotes, tags và distributed workflows. Git cũng có tài liệu Learn với video và cheat sheet cho người mới.
+Pro Git giải thích repository, commit history, branches, merging, rebasing, remotes, tags và distributed workflows.
 
-- Pro Git: https://git-scm.com/book/en/v2
-- Git Learn: https://git-scm.com/learn
+Nguồn: https://git-scm.com/book/en/v2
+Git Learn: https://git-scm.com/learn
 
-### Workflow thực hành
+Workflow:
+
 ```text
-git clone → branch → code → test → git diff → git add → git commit
-→ git push → Pull Request → review → merge
+git clone → branch → code → test → diff → commit
+→ push → Pull Request → review → merge
 ```
 
-Không chỉ học command. Cần hiểu commit graph, remote tracking, merge/rebase, revert/reset và cách phục hồi thay đổi.
+Không chỉ nhớ command; phải hiểu commit graph, revert/reset và cách phục hồi thay đổi.
 
-## 5. Numerical + Data stack
+## 5. Numerical + Data
 
 ### NumPy
-NumPy là nền tảng scientific computing trong Python, cung cấp multidimensional arrays, indexing, broadcasting, numerical/statistical operations, linear algebra và random simulation.
-
-- User Guide: https://numpy.org/doc/stable/user/
-
-**Bài tập:** reshape, indexing, broadcasting, vectorization, mean/std/percentile, matrix operations, random simulation.
+Arrays nhiều chiều, indexing, broadcasting, vectorization, statistics, linear algebra và simulation.
+Nguồn: https://numpy.org/doc/stable/user/
 
 ### pandas
-pandas tập trung vào dữ liệu dạng bảng và time series. User Guide có DataFrame/Series, missing data, selection, merge, groupby, reshape, plotting, importing/exporting và time series.
+DataFrame/Series, missing data, selection, merge, groupby, reshape, import/export và time series.
+Nguồn: https://pandas.pydata.org/docs/user_guide/
 
-- User Guide: https://pandas.pydata.org/docs/user_guide/
-- 10 minutes to pandas: https://pandas.pydata.org/docs/getting_started/intro_tutorials/
+Pipeline nên luyện:
 
-**Pipeline:** Raw data → schema validation → clean → normalize types → feature engineering → join/reshape → analysis → export.
+```text
+raw data → schema validation → cleaning → type normalization
+→ feature engineering → join/reshape → analysis → export
+```
 
 ## 6. Machine Learning
 
-### scikit-learn User Guide
-Tài liệu hiện tại bao phủ supervised/unsupervised learning, preprocessing, pipelines, model persistence và common pitfalls. Đặc biệt cần học data leakage, inconsistent preprocessing và cách chọn estimator.
+scikit-learn User Guide bao phủ supervised/unsupervised learning, preprocessing, pipelines, model selection và common pitfalls.
+Nguồn: https://scikit-learn.org/stable/user_guide.html
 
-- Nguồn: https://scikit-learn.org/stable/user_guide.html
+Kiến thức bắt buộc: train/validation/test, cross-validation, baseline, feature engineering, leakage, overfitting/underfitting, metrics, hyperparameter tuning và reproducibility.
 
-### Kiến thức bắt buộc
-- Train/validation/test split.
-- Baseline và cross-validation.
-- Feature engineering.
-- Data leakage.
-- Overfitting/underfitting.
-- Classification/regression metrics.
-- Hyperparameter tuning.
-- Reproducibility.
-- Pipeline để tránh preprocessing leakage.
+Đặc biệt học pipeline để tránh preprocessing leakage và validation phải phù hợp với cấu trúc dữ liệu.
 
-## 7. Coding cho AI / AI agents
+## 7. AI Coding Agents
 
-Coding AI không chỉ là viết prompt. Cần có engineering loop:
+Coding với AI phải được xem là engineering system, không phải prompt-only workflow:
 
 ```text
-Requirement → Design/interface → Implementation → Tests
-→ Run/observe → Evaluate → Review → Commit
+Requirement → plan → implementation → tests
+→ execution → evaluation → review → commit
 ```
 
-### Các năng lực nên học
-- Python + HTTP/API + JSON schema.
-- Tool/function calling.
-- Structured outputs và validation.
-- Retry, timeout, idempotency.
+Năng lực nên học:
+- Tool/function calling và structured inputs/outputs.
+- File/shell/API tools với permission rõ ràng.
+- JSON schema, validation, retry, timeout, idempotency.
 - Logging, tracing và observability.
 - Unit/integration/evaluation tests.
-- Dataset cho regression/evaluation.
-- Sandboxing khi cho model chạy code.
-- Secret management; không hard-code API keys.
+- Sandboxing khi agent chạy code.
+- Secret isolation; không hard-code API keys.
 - Git-based versioning và CI.
 
-### AI pair-programming workflow
-1. Mô tả requirement và acceptance criteria.
+## 8. Hugging Face Agents Course
+
+Khóa học miễn phí/có chứng nhận, đi từ agent fundamentals đến frameworks và triển khai. Nội dung gồm tools, thoughts, actions, observations; sau đó thực hành với smolagents, LangGraph và LlamaIndex, cùng các use case và evaluation.
+
+**Cách học:** viết một agent Python tối giản trước, sau đó dùng framework để so sánh abstraction. Mỗi agent phải có tool, test case và log.
+
+Nguồn: https://huggingface.co/agents-course
+Giới thiệu: https://huggingface.co/learn/agents-course/unit0/introduction
+
+## 9. Hugging Face Context Course
+
+Context engineering tập trung vào cách tổ chức kiến thức để agent tìm đúng thông tin đúng lúc. Course hiện có các unit về **Skills, MCP, Plugins, Subagents, Hooks** và một mini agent harness; hỗ trợ Claude Code, Codex và OpenCode.
+
+**Bài tập:** tạo `SKILL.md` cho repository; xây một MCP tool; thêm hook để kiểm soát lifecycle; đo số lỗi/rework trước và sau khi cải thiện context.
+
+Nguồn: https://huggingface.co/context-course
+Introduction: https://huggingface.co/learn/context-course/unit0/introduction
+
+## 10. GitHub Copilot Cloud Agent
+
+Copilot cloud agent có thể nghiên cứu repository, lập implementation plan, thay đổi code trên branch, tạo diff và Pull Request. Có thể bắt đầu từ issue hoặc task nhỏ và tiếp tục iterate bằng review comments.
+
+**Bài học:** issue → plan → branch → implementation → tests → diff review → PR. Không coi agent output là đã đúng chỉ vì PR tạo thành công.
+
+Nguồn: https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent
+Hướng dẫn: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/use-cloud-agent-on-github
+
+### Agent Skills
+GitHub mô tả Skills là các thư mục chứa instructions, scripts và resources mà agent nạp khi cần. Có thể tổ chức skill theo project và tái sử dụng giữa các agent.
+
+Nguồn: https://docs.github.com/en/copilot/concepts/agents/about-agent-skills
+
+## 11. OpenAI Codex
+
+Codex hiện được định vị như coding agent cho các task từ pull request, refactor, migration đến công việc dài hạn; Skills có thể truyền workflow và tiêu chuẩn của team cho agent. Đây là tài liệu nên đọc để hiểu agentic software engineering và multi-agent workflows.
+
+Nguồn: https://openai.com/codex/
+
+## 12. Đánh giá coding agent
+
+Không đánh giá bằng “code trông ổn”. Đánh giá bằng behavior có thể kiểm chứng:
+
+- Acceptance criteria.
+- Unit/integration tests.
+- Regression tests.
+- Patch correctness.
+- Tool-call errors.
+- Retry count.
+- Latency và cost/task.
+- Security violations.
+
+### SWE-bench Verified
+SWE-bench Verified là benchmark gồm 500 task đã được human-validated để đánh giá khả năng giải issue thực tế của coding agents.
+
+Nguồn: https://www.swebench.com/verified.html
+
+**Project benchmark cá nhân:** tạo 20 issue nhỏ → viết acceptance criteria/test → cho agent xử lý → lưu patch + test result + failure category → tính success rate và regression rate.
+
+## 13. AI pair-programming workflow
+
+1. Viết requirement và acceptance criteria.
 2. Yêu cầu AI lập plan trước khi sửa nhiều file.
-3. Tạo implementation nhỏ, có test.
+3. Cho agent làm thay đổi nhỏ.
 4. Chạy test/linter/type checker độc lập.
-5. Review diff thay vì tin output nguyên trạng.
-6. Ghi failure cases thành regression tests.
-7. Commit thay đổi nhỏ, message rõ ràng.
+5. Review diff, không review chỉ bằng summary.
+6. Ghi failure thành regression test.
+7. Commit nhỏ, message rõ.
 
-**Nguyên tắc:** AI tạo code không đồng nghĩa code đã đúng. Behavior phải được kiểm chứng bằng tests, execution và review.
+**Nguyên tắc:** model sinh code ≠ code đúng. Correctness phải được chứng minh bằng execution và tests.
 
-## 8. Project portfolio
-
-### Project A — Data pipeline
-CSV/API → validation → cleaning → pandas analysis → report → tests → GitHub.
-
-### Project B — AI API service
-HTTP service → schema validation → model/API call → retry/timeout → logging → tests → deployment notes.
-
-### Project C — Coding agent
-Agent nhận issue, đọc repository, đề xuất plan, sửa code, chạy tests và tạo patch/PR. Phải có sandbox, tool permissions và evaluation set.
-
-### Project D — ML project
-Dataset → baseline → preprocessing pipeline → model → cross-validation → error analysis → model card/README.
-
-## 9. Lộ trình đề xuất
+## 14. Roadmap học AI coding
 
 ```text
-CS50 / Algorithms
+CS50 / algorithms
         ↓
-Python fundamentals
-        ↓
-Git + GitHub
-        ↓
-Data structures + algorithms
-        ↓
-NumPy + pandas + SQL
+Python + Git
         ↓
 Testing + clean code
         ↓
-Backend / APIs
+APIs + JSON + HTTP
+        ↓
+NumPy + pandas + SQL
         ↓
 ML fundamentals
         ↓
-AI engineering / agents
+LLM APIs + structured output
         ↓
-Project thực tế + portfolio
+Tools + agent loop
+        ↓
+MCP + Skills + context engineering
+        ↓
+Repository coding agent
+        ↓
+Evaluation + sandbox + observability
+        ↓
+Production project
 ```
 
-## 10. Nguồn chính đã kiểm chứng
+## 15. Project portfolio
 
-| Chủ đề | Nguồn | Nội dung |
-|---|---|---|
-| Computer Science | Harvard CS50 | C, Python, SQL, algorithms, data structures, web |
-| Python | Python Docs 3.14 | Tutorial + language ecosystem |
-| JavaScript | MDN | Guide + reference |
-| Version control | Pro Git | Git workflow và internals |
-| Numerical computing | NumPy | Arrays, broadcasting, numerical computing |
-| Data analysis | pandas | DataFrame, cleaning, time series |
-| ML | scikit-learn | Models, pipelines, evaluation, leakage |
+### Project A — Data pipeline
+API/CSV → validation → cleaning → pandas → report → tests → GitHub.
 
-## 11. Bản quyền / provenance
+### Project B — AI API service
+HTTP endpoint → schema validation → model call → retry/timeout → logging → tests.
 
-Chỉ lưu **tóm tắt, ghi chú và metadata** của tài liệu nguồn. Không sao chép toàn văn sách/khóa học không cho phép tái phân phối. Nếu dùng các ghi chú này để xây corpus/training AI, cần kiểm tra license, terms, provenance và quyền sử dụng của từng nguồn.
+### Project C — Repository coding agent
+Issue → context → plan → patch → test → review → PR. Agent phải bị giới hạn quyền và có evaluation set.
 
-## 12. Cập nhật nguồn
+### Project D — Agent evaluation harness
+20–50 task coding có test; chạy nhiều model/agent; lưu trace, patch, test result, cost và failure mode.
 
-- Harvard CS50 syllabus 2026: https://cs50.harvard.edu/college/2026/fall/syllabus/
-- Python Tutorial 3.14: https://docs.python.org/3.14/tutorial/
-- MDN JavaScript Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
-- Pro Git: https://git-scm.com/book/en/v2
-- NumPy User Guide: https://numpy.org/doc/stable/user/
-- pandas User Guide: https://pandas.pydata.org/docs/user_guide/
-- scikit-learn User Guide: https://scikit-learn.org/stable/user_guide.html
+## 16. Nguồn cập nhật — 31/08/2026
 
-## 13. Tài liệu mới — AI coding agents và context engineering
+- Hugging Face Agents Course: https://huggingface.co/agents-course — agent fundamentals, frameworks và evaluation. citeturn0search2
+- Hugging Face Context Course: https://huggingface.co/context-course — Skills, MCP, Plugins, Subagents, Hooks và agent harness. citeturn0search0turn0search1
+- GitHub Copilot cloud agent: https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent — repository research, plan, code changes và PR workflow. citeturn0search13
+- GitHub Agent Skills: https://docs.github.com/en/copilot/concepts/agents/about-agent-skills — portable instructions/scripts/resources cho agent. citeturn0search5
+- OpenAI Codex: https://openai.com/codex/ — agentic coding, Skills và multi-agent workflows. citeturn0search4
+- SWE-bench Verified: https://www.swebench.com/verified.html — benchmark coding agent. 
 
-### Hugging Face — AI Agents Course
-Khóa học miễn phí, thiên về thực hành, đi từ agent fundamentals đến frameworks và project. Nội dung gồm cách agent dùng LLM làm “brain”, tools/actions, vòng lặp **Think → Act → Observe**, rồi thực hành với `smolagents`; các phần tiếp theo bao gồm LangGraph, LlamaIndex, agentic RAG, fine-tuning cho function calling và observability/evaluation.
+## 17. Provenance / bản quyền
 
-**Cách học:** trước hết tự viết một agent tối giản bằng Python; sau đó dùng framework để so sánh abstraction. Mỗi bài phải có tool, test case và log quan sát được.
-
-- Course: https://huggingface.co/learn/agents-course/unit0/introduction
-- Syllabus: https://huggingface.co/agents-course
-
-### Hugging Face — Context Course
-Context engineering tập trung vào cách cấu trúc kiến thức để code agent tìm đúng thông tin khi cần. Khóa học mới gồm **Skills, MCP, Plugins, Subagents, Hooks** và một mini agent harness; hỗ trợ các code agents như Claude Code, Codex và OpenCode.
-
-**Bài tập quan trọng:** tạo `SKILL.md`/knowledge module cho một repository, thiết kế MCP tool, sau đó đo xem agent có giảm lỗi và giảm số lần rework hay không.
-
-- Course: https://huggingface.co/context-course
-- Introduction: https://huggingface.co/learn/context-course/unit0/introduction
-
-### SWE-bench Verified — đánh giá coding agents
-SWE-bench Verified là tập 500 bài toán đã được con người kiểm định để đánh giá coding agents và language models. Bài học quan trọng là không đánh giá agent chỉ bằng “code nhìn có vẻ đúng”; cần chạy test, xác định issue có được giải quyết và đo tỷ lệ task thành công.
-
-**Bài tập:** lấy 5–10 issue nhỏ trong một repo cá nhân, viết acceptance criteria và test trước; cho agent sửa; sau đó đánh giá pass/fail và ghi failure mode.
-
-- Benchmark: https://www.swebench.com/verified.html
-
-### OpenAI AgentKit — lưu ý về thay đổi sản phẩm
-Tài liệu AgentKit của OpenAI mô tả các công cụ xây dựng, triển khai và tối ưu agents. Trang hiện ghi chú rằng **Agent Builder và Evals sẽ được ngừng cung cấp từ 30/11/2026**; với workflow cần tiếp tục dưới dạng code, OpenAI khuyến nghị Agents SDK.
-
-**Bài học cho engineering:** ưu tiên kiến thức portable — agent loop, tool interface, evaluation dataset, tracing, tests và Git — thay vì phụ thuộc vào một UI/product cụ thể.
-
-- Nguồn: https://openai.com/index/introducing-agentkit/
-
-## 14. AI coding curriculum thực hành
-
-### Level 1 — AI-assisted developer
-- Python + Git + testing.
-- Dùng AI để giải thích code, tạo test và refactor.
-- Luôn review diff và chạy test độc lập.
-
-### Level 2 — Tool-using coding agent
-- Tool đọc/ghi file có permission rõ ràng.
-- Shell execution trong sandbox.
-- Structured tool schema.
-- Timeout/retry.
-- Logs và trace.
-
-### Level 3 — Repository agent
-- Issue → plan → code → test → review → patch.
-- Repository context qua skills/MCP.
-- Regression suite.
-- Human approval trước destructive actions.
-
-### Level 4 — Agent evaluation
-- Tạo benchmark task riêng.
-- Acceptance criteria định lượng.
-- Pass/fail dựa trên test và behavior.
-- Ghi latency, token/cost, tool errors và rework.
-- Phân loại failure: reasoning, context, tool, code, test hoặc environment.
-
-### Level 5 — Multi-agent / production
-- Tách planner/coder/reviewer khi có lý do đo được.
-- Least-privilege tool permissions.
-- Sandboxing và secret isolation.
-- Observability.
-- Canary/rollback.
-- Evaluation regression trước mỗi thay đổi agent.
-
-## 15. Project AI coding đề xuất
-
-### Project E — Repository coding agent
-Xây một agent Python nhận issue Markdown. Agent phải:
-1. đọc repository context;
-2. lập plan;
-3. xác định file cần sửa;
-4. tạo patch;
-5. chạy test/lint;
-6. sửa nếu test fail;
-7. xuất summary + diff.
-
-**Acceptance criteria:** không được tự ý truy cập secret; mọi file thay đổi phải xuất hiện trong diff; test phải chạy trước khi báo thành công; destructive command phải bị chặn hoặc yêu cầu approval.
-
-### Project F — Agent evaluation harness
-Tạo 20 task coding nhỏ, mỗi task có repository snapshot, prompt, expected behavior và test. Chạy agent nhiều lần và lưu:
-
-```text
-Task → Agent run → Tool trace → Patch → Tests → Pass/Fail → Failure category
-```
-
-Từ đó tính success rate, regression rate, average retries và cost/task. Đây là bước chuyển từ “AI viết code” sang **engineering AI coding system**.
-
-## 16. Cập nhật tài liệu — 31/08/2026
-
-Các tài liệu AI-agent ở phần 13 được kiểm tra lại trong ngày 31/08/2026. Hugging Face Agents Course hiện có nội dung về agent fundamentals, frameworks, use cases và evaluation; Context Course tập trung vào context engineering cho code agents; SWE-bench Verified cung cấp benchmark 500 task đã human-validated. OpenAI AgentKit page hiện có thông báo thay đổi sản phẩm liên quan Agent Builder/Evals và khuyến nghị Agents SDK cho workflow tiếp tục dưới dạng code. citeturn0search7turn0search0turn0search2turn0search13turn0search4
+Chỉ lưu tóm tắt, ghi chú và metadata; không sao chép toàn văn tài liệu không cho phép tái phân phối. Khi dùng tài liệu để xây corpus/training AI, cần kiểm tra license, terms, provenance và quyền sử dụng từng nguồn.
