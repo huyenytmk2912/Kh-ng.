@@ -1,178 +1,169 @@
-# Tài liệu học Coding
+# Tài liệu học Coding + AI Coding
 
-> Kho học coding theo hướng **nền tảng CS → ngôn ngữ → thuật toán → Git → data → ML → project**. Mỗi nguồn bên dưới có mô tả nội dung, cách học và bài tập gợi ý; không chỉ lưu tiêu đề.
+> Bộ tài liệu học theo hướng **Computer Science → Python → Git → data → ML → AI engineering → project**. Đây là bản tổng hợp/ghi chú có nội dung học, bài tập và nguồn gốc; không sao chép toàn văn tài liệu bên ngoài.
 
-## 1. Computer Science và tư duy lập trình
+## 1. Computer Science nền tảng
 
 ### Harvard CS50 — Introduction to Computer Science
-- Phù hợp để xây nền tảng trước khi chuyên sâu một stack.
-- Nội dung gồm computational thinking, abstraction, algorithms, data structures, correctness, design và style.
-- Khóa học bắt đầu bằng C để hiểu memory và cách máy tính vận hành ở mức thấp; sau đó chuyển sang Python, SQL, HTML, CSS và JavaScript.
-- Có problem sets và final project nên phù hợp với cách học project-based.
+CS50 phù hợp để xây tư duy giải quyết vấn đề trước khi chạy theo framework. Chương trình 2026 mô tả computational thinking, abstraction, algorithms, data structures, correctness, design và style. Khóa bắt đầu bằng C để hiểu memory và máy tính ở mức thấp, sau đó chuyển sang Python, SQL, HTML, CSS và JavaScript; cuối khóa có final project.
+
+**Cách học:** làm problem set trước khi xem lời giải; ghi lại cách tiếp cận, complexity và lỗi gặp phải.
+
 - Nguồn: https://cs50.harvard.edu/college/2026/fall/syllabus/
 
-### Khan Academy — Algorithms
-- Tập trung vào searching, sorting, recursion và graph theory.
-- Có visualization, articles, quizzes và programming challenges.
-- Nên dùng để hình thành trực giác thuật toán trước khi chuyển sang giải bài bằng code.
-- Nguồn: https://www.khanacademy.org/computing/intro-to-algorithms
+### Thuật toán và cấu trúc dữ liệu
+Cần nắm Big-O, arrays, linked lists, stacks, queues, hash tables, trees, heaps, graphs, searching, sorting, recursion, dynamic programming, BFS/DFS và shortest path.
+
+**Bài tập:** mỗi thuật toán phải có implementation, test cases, complexity analysis và ít nhất một failure/edge case.
 
 ## 2. Python
 
-### Python Documentation
-- Tutorial chính thức cho syntax và các tính năng cốt lõi.
-- Library Reference để tra standard library và built-ins.
-- Language Reference để hiểu chính xác syntax/semantics.
-- HOWTOs dành cho các chủ đề chuyên sâu.
-- Nguồn: https://docs.python.org/3.14/
+### Python Tutorial — Python 3.14
+Tutorial chính thức tập trung vào người đã có chút nền tảng lập trình và muốn học Python. Nội dung gồm interpreter, numbers/text/lists, control flow, functions, data structures, modules, I/O, errors/exceptions, classes, standard library và virtual environments/packages.
+
+- Nguồn: https://docs.python.org/3.14/tutorial/
 
 ### Checklist Python
 1. Variables, numbers, strings, booleans.
-2. `if/elif/else`, `for`, `while`.
-3. Functions, arguments, return values và scope.
-4. List, tuple, set, dictionary.
-5. Comprehensions.
-6. Exceptions và logging.
-7. Modules, packages, virtual environments.
-8. File I/O, JSON, CSV.
-9. OOP, composition và dataclasses.
-10. Type hints.
-11. Unit testing.
-12. Packaging và dependency management.
+2. `if`, `for`, `while`, `match`.
+3. Functions, arguments, scope.
+4. List/tuple/set/dict.
+5. Comprehensions và generators.
+6. Exceptions, logging.
+7. Modules/packages.
+8. `venv`, dependency management.
+9. File I/O, JSON, CSV.
+10. OOP, composition, dataclasses.
+11. Type hints.
+12. Unit/integration testing.
+13. Async basics khi làm I/O-heavy systems.
 
 ### Project luyện tập
 - CLI calculator.
 - File organizer.
 - CSV/JSON cleaner.
-- REST API client.
-- Web scraper có retry, rate limit và logging.
-- Một project cuối khóa có test + README + Git history.
+- REST API client có retry/timeout.
+- Web scraper có rate limit và logging.
+- Project cuối khóa có tests, README, CI và Git history sạch.
 
-## 3. JavaScript và Web
+## 3. JavaScript / Web
 
 ### MDN JavaScript Guide
-Guide bao phủ introduction, grammar/types, control flow, loops, functions, expressions/operators, numbers/strings, dates, regex, collections, objects, classes, promises, iterators/generators, resource management, internationalization và modules.
+MDN Guide bao phủ grammar/types, control flow, loops, functions, expressions/operators, numbers/strings, dates, regex, collections, objects, classes, promises, iterators/generators, internationalization và modules. Reference dùng để tra chi tiết từng language feature.
 
 - Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 
-### Checklist JavaScript
-- Scope, `let`/`const`.
-- Functions và closures.
-- Objects, prototypes, classes.
-- Arrays và collections.
+### Checklist
+- Scope và `let`/`const`.
+- Functions, closures.
+- Objects/prototypes/classes.
+- Arrays/Map/Set.
 - Error handling.
 - Promise + `async/await`.
 - Modules.
-- DOM.
+- DOM và browser APIs.
 - Fetch/HTTP/JSON.
-- Browser storage và Web APIs.
+- Basic Node.js/backend concepts.
 
 ## 4. Git và GitHub
 
-### Pro Git Book
-Tài liệu bao phủ version control, repository, commit history, undo, remotes, tags, branches, merging, rebasing, distributed workflows, GitHub và Git tooling.
+### Pro Git
+Pro Git bao phủ version control, repository, commit history, branching, merging, rebasing, remotes, tags và distributed workflows. Git cũng có tài liệu Learn với video và cheat sheet cho người mới.
 
-- Nguồn: https://git-scm.com/book/en/v2
-- License của sách: Creative Commons Attribution-NonCommercial-ShareAlike 3.0.
+- Pro Git: https://git-scm.com/book/en/v2
+- Git Learn: https://git-scm.com/learn
 
 ### Workflow thực hành
 ```text
-git clone
-→ branch
-→ code
-→ test
-→ git diff
-→ git add
-→ git commit
-→ git push
-→ Pull Request
-→ review
-→ merge
+git clone → branch → code → test → git diff → git add → git commit
+→ git push → Pull Request → review → merge
 ```
 
-Không nên chỉ học command. Cần hiểu commit graph, branch, merge/rebase, remote tracking và cách phục hồi thay đổi.
+Không chỉ học command. Cần hiểu commit graph, remote tracking, merge/rebase, revert/reset và cách phục hồi thay đổi.
 
-## 5. NumPy
+## 5. Numerical + Data stack
 
-### NumPy User Guide
-NumPy là nền tảng scientific computing trong Python. User Guide tập trung vào ndarray, array creation, indexing, I/O, dtypes, broadcasting, copies/views, string/structured arrays và interoperability.
+### NumPy
+NumPy là nền tảng scientific computing trong Python, cung cấp multidimensional arrays, indexing, broadcasting, numerical/statistical operations, linear algebra và random simulation.
 
-- Nguồn: https://numpy.org/doc/stable/user/
+- User Guide: https://numpy.org/doc/stable/user/
 
-### Bài tập
-- Tạo và reshape arrays.
-- Vectorization thay cho Python loop khi phù hợp.
-- Broadcasting.
-- Tính mean/std/percentile.
-- Matrix operations.
-- Đọc và ghi dữ liệu số.
+**Bài tập:** reshape, indexing, broadcasting, vectorization, mean/std/percentile, matrix operations, random simulation.
 
-## 6. pandas và xử lý dữ liệu
+### pandas
+pandas tập trung vào dữ liệu dạng bảng và time series. User Guide có DataFrame/Series, missing data, selection, merge, groupby, reshape, plotting, importing/exporting và time series.
 
-### pandas Getting Started + User Guide
-pandas cung cấp DataFrame và công cụ để explore, clean và process dữ liệu dạng bảng. Tài liệu chính thức có hướng dẫn CSV, Excel, SQL, JSON, Parquet, selection, missing data, groupby, reshape, plotting và time series.
-
-- Getting started: https://pandas.pydata.org/docs/getting_started/
 - User Guide: https://pandas.pydata.org/docs/user_guide/
+- 10 minutes to pandas: https://pandas.pydata.org/docs/getting_started/intro_tutorials/
 
-### Pipeline nên luyện
-```text
-Raw data
-  ↓
-Load
-  ↓
-Validate schema
-  ↓
-Handle missing/duplicates
-  ↓
-Normalize types
-  ↓
-Feature engineering
-  ↓
-Aggregate / join / reshape
-  ↓
-Analysis
-  ↓
-Export
-```
+**Pipeline:** Raw data → schema validation → clean → normalize types → feature engineering → join/reshape → analysis → export.
 
-Project tốt để luyện: lấy một dataset có timestamp, xây pipeline làm sạch và tạo báo cáo thống kê có thể chạy lại.
-
-## 7. Machine Learning
+## 6. Machine Learning
 
 ### scikit-learn User Guide
-- Bao phủ supervised learning, linear models, logistic regression, SVM, dimensionality reduction và nhiều thuật toán ML thực dụng.
+Tài liệu hiện tại bao phủ supervised/unsupervised learning, preprocessing, pipelines, model persistence và common pitfalls. Đặc biệt cần học data leakage, inconsistent preprocessing và cách chọn estimator.
+
 - Nguồn: https://scikit-learn.org/stable/user_guide.html
 
 ### Kiến thức bắt buộc
 - Train/validation/test split.
-- Baseline.
-- Cross-validation.
+- Baseline và cross-validation.
 - Feature engineering.
 - Data leakage.
 - Overfitting/underfitting.
-- Classification metrics: precision, recall, F1, ROC-AUC.
-- Regression metrics.
+- Classification/regression metrics.
 - Hyperparameter tuning.
 - Reproducibility.
+- Pipeline để tránh preprocessing leakage.
 
-## 8. Coding cho AI / agent
+## 7. Coding cho AI / AI agents
 
-Khi dùng coding để xây AI agent, nên bổ sung:
-- API design và JSON schema.
+Coding AI không chỉ là viết prompt. Cần có engineering loop:
+
+```text
+Requirement → Design/interface → Implementation → Tests
+→ Run/observe → Evaluate → Review → Commit
+```
+
+### Các năng lực nên học
+- Python + HTTP/API + JSON schema.
 - Tool/function calling.
-- Retry, timeout và idempotency.
-- Logging và tracing.
-- Evaluation dataset.
-- Unit/integration tests.
-- Sandboxing cho code execution.
-- Git-based versioning.
-- Regression tests trước/sau khi AI sửa code.
+- Structured outputs và validation.
+- Retry, timeout, idempotency.
+- Logging, tracing và observability.
+- Unit/integration/evaluation tests.
+- Dataset cho regression/evaluation.
+- Sandboxing khi cho model chạy code.
+- Secret management; không hard-code API keys.
+- Git-based versioning và CI.
 
-AI coding nên được dùng như một **pair programmer**: yêu cầu giải thích, tạo test, review và đề xuất phương án; code phải được chạy và kiểm chứng độc lập.
+### AI pair-programming workflow
+1. Mô tả requirement và acceptance criteria.
+2. Yêu cầu AI lập plan trước khi sửa nhiều file.
+3. Tạo implementation nhỏ, có test.
+4. Chạy test/linter/type checker độc lập.
+5. Review diff thay vì tin output nguyên trạng.
+6. Ghi failure cases thành regression tests.
+7. Commit thay đổi nhỏ, message rõ ràng.
 
-## 9. Lộ trình tổng hợp
+**Nguyên tắc:** AI tạo code không đồng nghĩa code đã đúng. Behavior phải được kiểm chứng bằng tests, execution và review.
+
+## 8. Project portfolio
+
+### Project A — Data pipeline
+CSV/API → validation → cleaning → pandas analysis → report → tests → GitHub.
+
+### Project B — AI API service
+HTTP service → schema validation → model/API call → retry/timeout → logging → tests → deployment notes.
+
+### Project C — Coding agent
+Agent nhận issue, đọc repository, đề xuất plan, sửa code, chạy tests và tạo patch/PR. Phải có sandbox, tool permissions và evaluation set.
+
+### Project D — ML project
+Dataset → baseline → preprocessing pipeline → model → cross-validation → error analysis → model card/README.
+
+## 9. Lộ trình đề xuất
 
 ```text
 CS50 / Algorithms
@@ -187,37 +178,37 @@ NumPy + pandas + SQL
         ↓
 Testing + clean code
         ↓
-Web/backend hoặc systems
+Backend / APIs
         ↓
-scikit-learn / AI
+ML fundamentals
+        ↓
+AI engineering / agents
         ↓
 Project thực tế + portfolio
 ```
 
-## 10. Danh mục nguồn
+## 10. Nguồn chính đã kiểm chứng
 
-| Chủ đề | Nguồn | Nội dung chính |
+| Chủ đề | Nguồn | Nội dung |
 |---|---|---|
-| Computer Science | Harvard CS50 | Problem solving, C, Python, SQL, web |
-| Algorithms | Khan Academy | Search, sort, recursion, graphs |
-| Python | Python Docs | Syntax, standard library, HOWTO |
+| Computer Science | Harvard CS50 | C, Python, SQL, algorithms, data structures, web |
+| Python | Python Docs 3.14 | Tutorial + language ecosystem |
 | JavaScript | MDN | Guide + reference |
-| Version control | Pro Git | Git/GitHub workflow |
-| Numerical computing | NumPy | Arrays, broadcasting, numerical operations |
+| Version control | Pro Git | Git workflow và internals |
+| Numerical computing | NumPy | Arrays, broadcasting, numerical computing |
 | Data analysis | pandas | DataFrame, cleaning, time series |
-| ML | scikit-learn | Supervised learning và model evaluation |
+| ML | scikit-learn | Models, pipelines, evaluation, leakage |
 
-## 11. Bản quyền và cách sử dụng
+## 11. Bản quyền / provenance
 
-File này là **bản tổng hợp/ghi chú**, không sao chép toàn văn các khóa học, sách hoặc tài liệu nguồn. Khi đưa dữ liệu vào corpus training AI, cần kiểm tra license/terms và provenance của từng nguồn. Với tài liệu không cho phép tái phân phối, chỉ nên lưu metadata, tóm tắt và URL nguồn.
+Chỉ lưu **tóm tắt, ghi chú và metadata** của tài liệu nguồn. Không sao chép toàn văn sách/khóa học không cho phép tái phân phối. Nếu dùng các ghi chú này để xây corpus/training AI, cần kiểm tra license, terms, provenance và quyền sử dụng của từng nguồn.
 
-## 12. Nguồn đã kiểm chứng
+## 12. Cập nhật nguồn
 
-- Python Docs: https://docs.python.org/3.14/
-- Harvard CS50: https://cs50.harvard.edu/college/2026/fall/syllabus/
-- Khan Academy Algorithms: https://www.khanacademy.org/computing/intro-to-algorithms
+- Harvard CS50 syllabus 2026: https://cs50.harvard.edu/college/2026/fall/syllabus/
+- Python Tutorial 3.14: https://docs.python.org/3.14/tutorial/
 - MDN JavaScript Guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
 - Pro Git: https://git-scm.com/book/en/v2
 - NumPy User Guide: https://numpy.org/doc/stable/user/
-- pandas: https://pandas.pydata.org/docs/getting_started/
-- scikit-learn: https://scikit-learn.org/stable/user_guide.html
+- pandas User Guide: https://pandas.pydata.org/docs/user_guide/
+- scikit-learn User Guide: https://scikit-learn.org/stable/user_guide.html
